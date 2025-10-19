@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Frase Aleatoria para Mamá</title>
+
+    <!-- Google Fonts EB Garamond -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'EB Garamond', serif;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://img.freepik.com/fotos-premium/grupo-gatos-estan-pie-circulo-mirando-cielo_278455-71424.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Reemplazo del backdrop-filter (causa de pantalla blanca en iPhone) */
+        .filtro {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.6);
+            z-index: 0;
+        }
+
+        .recuadro {
+            background-color: #ffc0cb;
+            border: 3px solid #add8e6;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 24px;
+            color: #4b0082;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            z-index: 1;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+            font-family: 'EB Garamond', serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Forzar vista horizontal a pantalla completa en iPhone */
+        @media screen and (orientation: landscape) {
+            html, body {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="filtro"></div>
+
+<div class="recuadro" id="frase">
+    <!-- Aquí aparecerá la frase -->
+</div>
+
+<button id="nuevo">Generar otra frase</button>
+
+<script>
+    const textos = [
+        "¡Feliz Día, mamá! Gracias por tanto amor y paciencia.",
+        "Todo lo que soy, te lo debo a ti. 💕",
+        "Gracias por ser mi guía, mi apoyo y mi ejemplo.",
+        "Gracias por convertirme en la persona que soy.",
+        "Gracias por darme tanto sin esperar nada a cambio.",
+        "Sos la definición de valentía.",
+        "Sin vos, no sería quien soy.",
+        "Mamá, sos más fuerte de lo que creés. 💪",
+        "Tu fuerza inspira a todos los que te rodean.",
+        "Mamá, todo lo que has superado demuestra tu grandeza.",
+        "Aunque el camino sea difícil, vos podés con todo.",
+        "Sos suficiente, tal como sos. 🌸",
+        "No hace falta que puedas con todo, mamá. A veces, solo estar ya es mucho.",
+        "Mamá, no estás sola: siempre vas a tener quien te admire y te quiera.",
+        "Mamá, tu valor no depende de lo que hacés, sino de quién sos.",
+        "Mamá, el bien que hacés siempre vuelve.",
+        "Recordá lo lejos que llegaste y todo lo que superaste.",
+        "Nadie trabaja más duro ni ama más que vos.",
+        "Tenés una fortaleza enorme, incluso en los días en que te sentís débil. 🌷",
+        "Los días malos no duran para siempre, y hay tanta gente que te quiere, que te cuida y que está deseando verte bien. ❤️",
+        "No estás sola, mamá. Te acompaño con todo mi amor. ❤️",
+        "Sos un ejemplo de lucha y amor, mamá.",
+        "Mamá, cada día que pasa te hace más fuerte. 💪",
+        "No estás sola: estoy con vos en cada paso. ❤️",
+        "Sos más capaz de lo que imaginás.",
+        "Te amo, mamá, y sé que juntos vamos a salir adelante. ❤️"
+    ];
+
+    function mostrarFrase() {
+        const fraseAleatoria = textos[Math.floor(Math.random() * textos.length)];
+        document.getElementById("frase").innerText = fraseAleatoria;
+    }
+
+    // Mostrar frase al cargar
+    window.addEventListener('load', mostrarFrase);
+
+    // Generar nueva frase al hacer click
+    document.getElementById("nuevo").addEventListener("click", mostrarFrase);
+</script>
+
+</body>
+</html>
